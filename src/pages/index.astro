@@ -2,17 +2,53 @@
 import Layout from "../components/Layout.astro";
 ---
 
+<script>
+  let root = document.querySelector(':root') as HTMLElement;
+  let mapping = {
+    "config-border-radius": "--border-radius",
+    "config-border-width": "--border-width",
+    "config-box-shadow-spread": "--box-shadow-spread",
+  };
+
+  Object.entries(mapping).forEach(([id, style]) => {
+    document.getElementById(id).addEventListener("input", (event) => {
+      let { value } = event.target as HTMLInputElement;
+      root.style.setProperty(style, `${value}px`);
+    });
+  });
+</script>
+
+<style>
+  :root {
+    --border-radius: 0px;
+    --border-width: 1px;
+    --box-shadow-spread: 0px;
+  }
+  .config {
+    border-radius: var(--border-radius);
+    border-width: var(--border-width);
+    box-shadow: 0px 0px var(--box-shadow-spread) 0 rgba(0,0,0,0.4);
+  }
+</style>
+
 <Layout title="Portfolio">
   <main>
     <img
       src="/background.svg"
       style="position: fixed; z-index: -1; width: 100vw; height: 100vh;"
     />
+    <div>
+      <input type="range" min="0" max="40" value="0" id="config-border-radius" />
+      <input type="range" min="0" max="10" value="1" id="config-border-width" />
+      <input type="range" min="0" max="40" value="0" id="config-box-shadow-spread" />
+      <input type="range" min="0" max="40" value="0" id="config-border-radius" />
+    </div>
+
     <div
-      class="container h-screen mx-auto px-20 py-32 grid grid-rows-[35px_3fr_100px_40px_2fr] grid-cols-[30px_3fr_30px_100px_2fr] gap-4"
+      class="container h-screen mx-auto px-20 py-32 grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-10 lg:gap-20"
     >
       <div
-        class="border border-gray-300 bg-dark-blue backdrop-blur p-4 text-lg col-span-2 row-span-2"
+        class="border-gray-300 bg-dark-blue backdrop-blur p-4 text-lg mr-4 md:mr-16 config hover:scale-125 transition-transform"
       >
         Hello!<br /><br />
         I'm Janek Winkler a passionate professional gameplay and tools engineer who
@@ -20,7 +56,7 @@ import Layout from "../components/Layout.astro";
       </div>
 
       <div
-        class="border border-gray-300 bg-dark-blue backdrop-blur p-4 text-lg col-span-1 row-span-3 col-end-6 row-start-2"
+        class="border-gray-300 bg-dark-blue backdrop-blur p-4 text-lg row-span-2 ml-8 md:ml-10 md:my-10 config hover:scale-125 transition-transform"
       >
         <ul>
           <li>Github</li>
@@ -32,11 +68,15 @@ import Layout from "../components/Layout.astro";
       </div>
 
       <div
-        class="border border-gray-300 bg-dark-blue backdrop-blur p-4 text-lg col-span-2 row-span-2 col-start-2 row-end-6 flex gap-6"
+        class="border-gray-300 bg-dark-blue backdrop-blur p-4 text-lg flex gap-6 md:ml-24 md:my-4 mr-2 config hover:scale-125 transition-transform"
       >
-        <div class="basis-1/2 flex justify-center"><img src="catoffel_mono.svg"/></div>
+        <div class="basis-1/2 flex justify-center">
+          <img src="catoffel_mono.svg" />
+        </div>
         <div class="bg-orange w-0.5"></div>
-        <div class="basis-1/2 flex flex-col justify-center">Catoffel <br> Explorative <br> Two player PC Game</div>
+        <div class="basis-1/2 flex flex-col justify-center">
+          Catoffel <br /> Explorative <br /> Two player PC Game
+        </div>
       </div>
     </div>
   </main>
