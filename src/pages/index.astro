@@ -37,13 +37,6 @@ import Layout from "../components/Layout.astro";
       src="/background.svg"
       style="position: fixed; z-index: -1; width: 100vw; height: 100vh;"
     />
-    <div>
-      <input type="range" min="0" max="40" value="0" id="config-border-radius" />
-      <input type="range" min="0" max="10" value="1" id="config-border-width" />
-      <input type="range" min="0" max="40" value="0" id="config-box-shadow-spread" />
-      <input type="range" min="0" max="40" value="0" id="config-border-radius" />
-    </div>
-
     <div
       class="container h-screen mx-auto px-20 py-32 grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-10 lg:gap-20"
     >
@@ -78,6 +71,22 @@ import Layout from "../components/Layout.astro";
           Catoffel <br /> Explorative <br /> Two player PC Game
         </div>
       </div>
+    </div>
+
+    <div class="p-5 flex gap-10">
+      <b>Style Settings</b>
+      <label class="flex gap-2">
+        Border Radius
+        <input type="range" min="0" max="40" value="0" id="config-border-radius" />
+      </label>
+      <label class="flex gap-2">
+        Border Width
+        <input type="range" min="0" max="10" value="1" id="config-border-width" />
+      </label>
+      <label class="flex gap-2">
+        Shadow Spread
+        <input type="range" min="0" max="40" value="0" id="config-box-shadow-spread" />
+      </label>
     </div>
   </main>
 </Layout>
