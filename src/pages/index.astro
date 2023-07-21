@@ -1,9 +1,10 @@
 ---
 import Layout from "../components/Layout.astro";
+import { Icon } from "astro-icon";
 ---
 
 <script>
-  let root = document.querySelector(':root') as HTMLElement;
+  let root = document.querySelector(":root") as HTMLElement;
   let mapping = {
     "config-border-radius": "--border-radius",
     "config-border-width": "--border-width",
@@ -27,65 +28,121 @@ import Layout from "../components/Layout.astro";
   .config {
     border-radius: var(--border-radius);
     border-width: var(--border-width);
-    box-shadow: 0px 0px var(--box-shadow-spread) 0 rgba(0,0,0,0.4);
+    box-shadow: 0px calc(var(--box-shadow-spread) / 2) var(--box-shadow-spread)
+      0 rgba(0, 0, 0, 0.4);
   }
 </style>
 
 <Layout title="Portfolio">
-  <main>
-    <img
-      src="/background.svg"
-      style="position: fixed; z-index: -1; width: 100vw; height: 100vh;"
-    />
+  <main class="font-mono">
     <div
-      class="container h-screen mx-auto px-20 py-32 grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-10 lg:gap-20"
+      class="h-screen w-screen fixed bg-cover -z-10"
+      style="background-image: url('/background.svg');"
     >
-      <div
-        class="border-gray-300 bg-dark-blue backdrop-blur p-4 text-lg mr-4 md:mr-16 config hover:scale-125 transition-transform"
-      >
-        Hello!<br /><br />
-        I'm Janek Winkler a passionate professional gameplay and tools engineer who
-        loves to design and develop game-focused applications.
-      </div>
-
-      <div
-        class="border-gray-300 bg-dark-blue backdrop-blur p-4 text-lg row-span-2 ml-8 md:ml-10 md:my-10 config hover:scale-125 transition-transform"
-      >
-        <ul>
-          <li>Github</li>
-          <li>Email</li>
-          <li>Telegram</li>
-          <li>Twitter</li>
-          <li>Instagram</li>
-        </ul>
-      </div>
-
-      <div
-        class="border-gray-300 bg-dark-blue backdrop-blur p-4 text-lg flex gap-6 md:ml-24 md:my-4 mr-2 config hover:scale-125 transition-transform"
-      >
-        <div class="basis-1/2 flex justify-center">
-          <img src="catoffel_mono.svg" />
+    </div>
+    <div class="min-h-screen w-screen flex flex-col p-1">
+      <div class="flex justify-between opacity-80 hover:opacity-100 transition-opacity">
+        <div
+          class="bg-dark-blue backdrop-blur config border-white/50 p-1 self-start flex gap-4"
+        >
+          <Icon class="h-6 text-green" pack="mdi" name="circle" />
+          <a class="hover:underline decoration-2" href="foobar">contact</a>
+          <a class="hover:underline decoration-2" href="foobar">work</a>
+          <a class="hover:underline decoration-2" href="foobar">art</a>
         </div>
-        <div class="bg-orange w-0.5"></div>
-        <div class="basis-1/2 flex flex-col justify-center">
-          Catoffel <br /> Explorative <br /> Two player PC Game
+        <div
+          class="bg-dark-blue backdrop-blur config border-white/50 p-1 self-start flex gap-4"
+        >
+          <Icon class="h-6" pack="mdi" name="clock-time-eight" />
+        </div>
+        <div
+          class="bg-dark-blue backdrop-blur config border-white/50 p-1 self-start flex gap-2"
+        >
+          <Icon class="h-6 text-white" pack="mdi" name="circle" />
+          <Icon class="h-6 text-white/50" pack="mdi" name="circle" />
+          <Icon class="h-6 text-white/50" pack="mdi" name="circle" />
+          <div>|</div>
+          <Icon class="h-6" pack="mdi" name="battery-80" />
+          <Icon class="h-6" pack="mdi" name="bell-badge" />
+          <Icon class="h-6" pack="mdi" name="calendar-minus" />
+          <Icon class="h-6" pack="mdi" name="clipboard-multiple" />
+        </div>
+      </div>
+
+      <div
+        class="container mx-auto grow px-20 py-20 grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-10 lg:gap-20"
+      >
+        <div
+          class="border-white/50 bg-dark-blue backdrop-blur p-4 text-lg mr-4 md:mr-16 config hover:scale-110 transition-transform"
+        >
+          Hello!<br /><br />
+          I'm <span class="text-orange">Janek Winkler</span> a passionate professional
+          gameplay and tools engineer who loves to design and develop game-focused
+          applications.
+        </div>
+
+        <div
+          class="border-white/50 bg-dark-blue backdrop-blur p-4 text-lg row-span-2 ml-8 md:ml-10 md:my-10 config hover:scale-110 transition-transform"
+        >
+          <ul class="flex flex-col gap-1">
+            <li class="flex items-center gap-2 leading-none">
+              <Icon class="h-6" pack="mdi" name="github" /><span
+                class="leading-none">Github</span
+              >
+            </li>
+            <li class="flex items-center gap-2 leading-none">
+              <Icon class="h-6" pack="mdi" name="email" />Email
+            </li>
+            <li>Telegram</li>
+            <li>Twitter</li>
+            <li>Instagram</li>
+          </ul>
+        </div>
+
+        <div
+          class="border-white/50 bg-dark-blue backdrop-blur p-4 text-lg flex gap-6 md:ml-24 md:my-4 mr-2 config hover:scale-110 transition-transform"
+        >
+          <div class="basis-1/2 flex justify-center">
+            <img src="catoffel_mono.svg" />
+          </div>
+          <div class="bg-orange w-0.5"/>
+          <div class="basis-1/2 flex flex-col justify-center">
+            Catoffel <br /> Explorative <br /> Two player PC Game
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="p-5 flex gap-10">
+    <div class="p-5 flex gap-10 bg-black">
       <b>Style Settings</b>
       <label class="flex gap-2">
         Border Radius
-        <input type="range" min="0" max="40" value="0" id="config-border-radius" />
+        <input
+          type="range"
+          min="0"
+          max="40"
+          value="0"
+          id="config-border-radius"
+        />
       </label>
       <label class="flex gap-2">
         Border Width
-        <input type="range" min="0" max="10" value="1" id="config-border-width" />
+        <input
+          type="range"
+          min="0"
+          max="10"
+          value="1"
+          id="config-border-width"
+        />
       </label>
       <label class="flex gap-2">
         Shadow Spread
-        <input type="range" min="0" max="40" value="0" id="config-box-shadow-spread" />
+        <input
+          type="range"
+          min="0"
+          max="40"
+          value="0"
+          id="config-box-shadow-spread"
+        />
       </label>
     </div>
   </main>
