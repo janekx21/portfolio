@@ -1,20 +1,18 @@
 ---
 import Layout from "../components/Layout.astro";
 import { Icon } from "astro-icon";
+import Window from "../components/Window.svelte";
+import Background from "../components/Background.svelte"
 ---
 
 <Layout title="Portfolio">
-  <div
-    class="border-white/20 bg-dark-blue backdrop-blur p-4 text-lg mr-4 md:mr-16 window hover:scale-110 transition-transform"
-  >
+  <Window client:load>
     Hello!<br /><br />
     I'm <span class="text-orange">Janek Winkler</span> a passionate professional
     gameplay and tools engineer who loves to design and develop game-focused applications.
-  </div>
+  </Window>
 
-  <div
-    class="border-white/20 bg-dark-blue backdrop-blur p-4 text-lg row-span-2 ml-8 md:ml-10 md:my-10 window hover:scale-110 transition-transform"
-  >
+  <Window client:load>
     <ul class="flex flex-col gap-1">
       <li class="flex items-center gap-2 leading-none">
         <Icon class="h-6" pack="mdi" name="github" /><span class="leading-none"
@@ -28,17 +26,21 @@ import { Icon } from "astro-icon";
       <li>Twitter</li>
       <li>Instagram</li>
     </ul>
-  </div>
+  </Window>
 
-  <div
-    class="border-white/20 bg-dark-blue backdrop-blur p-4 text-lg flex gap-6 md:ml-24 md:my-4 mr-2 window hover:scale-110 transition-transform"
-  >
-    <div class="basis-1/2 flex justify-center">
-      <img src="catoffel_mono.svg" />
+  <Window client:load>
+    <div class="flex flex-row h-full">
+      <div class="basis-1/2 flex justify-center">
+        <img src="catoffel_mono.svg" />
+      </div>
+      <div class="bg-orange w-0.5 mx-2 rounded"></div>
+      <div class="basis-1/2 flex flex-col justify-center">
+        Catoffel <br /> Explorative <br /> Two player PC Game
+      </div>
     </div>
-    <div class="bg-orange w-0.5"></div>
-    <div class="basis-1/2 flex flex-col justify-center">
-      Catoffel <br /> Explorative <br /> Two player PC Game
-    </div>
+  </Window>
+
+  <div style="position: absolute; inset: 0; z-index: -1; overflow: hidden;" id="background">
   </div>
+    <Background client:only/>
 </Layout>
