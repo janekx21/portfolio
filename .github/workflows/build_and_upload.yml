@@ -1,0 +1,37 @@
+name: build and upload
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    #strategy:
+      #matrix:
+        #node-version: [16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run build --if-present
+    - name: ftp-action
+      uses: sebastianpopp/ftp-action@v2.0.0
+      with:
+        host: janekx21.lima-ftp.de
+        user: janekx21
+        password: ${{ secrets.ftp_password }}
+        # forceSsl: # optional, default is false
+        localDir: dist
+        remoteDir: .
+            
