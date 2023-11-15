@@ -3,6 +3,8 @@ import Layout from "../components/Layout.astro";
 import { Icon } from "astro-icon";
 import Window from "../components/Window.svelte";
 import Background from "../components/Background.svelte"
+import NeoTrain from "../components/NeoTrain.astro"
+import TheCoffice from "../components/TheCoffice.astro"
 ---
 
 <Layout title="Portfolio">
@@ -13,19 +15,66 @@ import Background from "../components/Background.svelte"
   </Window>
 
   <Window client:load>
-    <ul class="flex flex-col gap-1">
+    <ul class="flex flex-col gap-2">
       <li class="flex items-center gap-2 leading-none">
-        <Icon class="h-6" pack="mdi" name="github" /><span class="leading-none"
-          >Github</span
-        >
+        <Icon class="h-6" pack="mdi" name="github" />
+        <a href="https://github.com/janekx21" class="hover:underline decoration-2"> Github </a>
       </li>
       <li class="flex items-center gap-2 leading-none">
-        <Icon class="h-6" pack="mdi" name="email" />Email
+        <Icon class="h-6" pack="mdi" name="email" />
+        <a href="mailto:janekx21[insert_at]gmail.com" class="hover:underline decoration-2"> Email </a>
       </li>
-      <li>Telegram</li>
-      <li>Twitter</li>
-      <li>Instagram</li>
+      <li class="flex items-center gap-2 leading-none">
+        <Icon class="h-6" pack="cib" name="itch-io" />
+        <a href="https://janekx21.itch.io/" class="hover:underline decoration-2"> Itch.io </a>
+      </li>
+      <li class="flex items-center gap-2 leading-none">
+        <Icon class="h-6" pack="ri" name="instagram-fill" />
+        <a href="https://www.instagram.com/janekx21/" class="hover:underline decoration-2"> Instagram </a>
+      </li>
     </ul>
+  </Window>
+
+  <Window client:load>
+    <div class="flex flex-col h-full">
+      <div class="basis-1/2 flex justify-center items-center">
+        <NeoTrain/>
+      </div>
+      <div class="bg-orange h-0.5 my-2 rounded"></div>
+      <div class="basis-1/2 flex gap-3 items-center">
+        <span>
+          A touch typing trainer written in <a class="hover:underline decoration-2" href="https://elm-lang.org/">Elm</a>.
+          It is designed to help you learn <a class="hover:underline decoration-2" href="https://www.neo-layout.org/">Neo</a> by dictation, and has special lessons for this purpose.
+        </span>
+      </div>
+
+      <a class="fixed top-0 right-0 p-4" href="https://neo-train.lamdera.app/"> <Icon class="h-6" pack="bi" name="box-arrow-up-right" /> </a>
+    </div>
+  </Window>
+
+  <Window client:load>
+    <div class="flex flex-row h-full">
+      <div class="basis-1/2 flex justify-center">
+        <img src="ace_of_space.png" />
+      </div>
+      <div class="bg-orange w-0.5 mx-2 rounded"></div>
+      <div class="basis-1/2 flex flex-col gap-3 justify-center">
+        <span>Two player arcade shooter with cute graphics build with unity</span>
+      </div>
+      <a class="fixed top-0 right-0 p-4" href="https://janekx21.itch.io/ace-of-space"> <Icon class="h-6" pack="bi" name="box-arrow-up-right" /> </a>
+    </div>
+  </Window>
+
+  <Window client:load>
+    <div class="flex flex-col h-full">
+      <div class="basis-1/2 flex justify-center min-w-0">
+        <TheCoffice />
+      </div>
+      <div class="bg-orange h-0.5 my-2 rounded"></div>
+      <div class="basis-1/2 flex gap-4 items-center">
+        Topdown zombie shooter with pixel look build with Unity
+      </div>
+    </div>
   </Window>
 
   <Window client:load>
@@ -40,7 +89,6 @@ import Background from "../components/Background.svelte"
     </div>
   </Window>
 
-  <div style="position: absolute; inset: 0; z-index: -1; overflow: hidden;" id="background">
-  </div>
-    <Background client:only/>
+  <div style="position: absolute; inset: 0; z-index: -1; overflow: hidden;" id="background"> </div>
+  <Background client:only/>
 </Layout>

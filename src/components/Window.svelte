@@ -8,13 +8,17 @@
   let windowHeight;
 
   let scrollSpring = spring(0,{
-    stiffness: .1,
+    stiffness: .12,
+    damping: .35,
   });
   let size = spring(1, {
     stiffness: 0.3,
+    damping: 0.5,
+  });
+  let pointing = spring({ x: 0, y: 0 }, {
+    stiffness: 0.2,
     damping: 0.3,
   });
-  let pointing = spring({ x: 0, y: 0 });
   $: width = (box?.clientWidth ?? 400)
   $: height = (box?.clientHeight ?? 400)
   $: center = {
@@ -22,7 +26,7 @@
     y: (box?.offsetTop ?? 0) + height / 2,
   };
   $: rotateY = $pointing.x + (center.x / windowWidth - 0.5) * -20;
-  $: rotateX = $pointing.y + (center.y / windowHeight - 0.5) * 20 - (scroll - $scrollSpring);
+  $: rotateX = $pointing.y + ((center.y - scroll) / windowHeight - 0.5) * 20 - (scroll - $scrollSpring) * .4;
   $: style = `transform: perspective(1000px) scale(${$size}) rotateY(${rotateY}deg) rotateX(${rotateX}deg); filter: brightness(${brightness})`;
   $: normalizedSize =1// Math.sqrt(width * height) * .004
   $: shineStyle = `background: radial-gradient(500px 1200px at ${rotateX * 10 + width/2}px ${rotateY * 10 + height/2 + 250}px , rgba(255,255,255,15%) 0%, rgba(255,255,255,5%) 30%, rgba(255,255,255,0) 100%);`

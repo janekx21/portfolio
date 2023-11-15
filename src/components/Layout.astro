@@ -17,21 +17,6 @@ const { title } = Astro.props as Props;
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>{title}</title>
     <ViewTransitions />
-    <script>
-      let root = document.querySelector(":root") as HTMLElement;
-      let mapping = {
-        "window-border-radius": "--border-radius",
-        "window-border-width": "--border-width",
-        "window-box-shadow-spread": "--box-shadow-spread",
-      };
-
-      Object.entries(mapping).forEach(([id, style]) => {
-        document.getElementById(id).addEventListener("input", (event) => {
-          let { value } = event.target as HTMLInputElement;
-          root.style.setProperty(style, `${value}px`);
-        });
-      });
-    </script>
   </head>
   <body>
     <div
@@ -44,7 +29,7 @@ const { title } = Astro.props as Props;
         class="flex justify-between opacity-80 hover:opacity-100 transition-opacity"
       >
         <div
-          class="bg-dark-blue backdrop-blur window p-1 self-start flex gap-4 px-2"
+          class="bg-dark-blue backdrop-blur rounded-full p-1 self-start flex gap-4 px-2"
         >
           <Icon class="h-6 text-green -ml-1" pack="mdi" name="circle" />
           <a class="hover:underline decoration-2" href="/">index</a>
@@ -53,13 +38,13 @@ const { title } = Astro.props as Props;
         </div>
 
         <div
-          class="bg-dark-blue backdrop-blur window border-white/20 p-1 self-start flex gap-4"
+          class="bg-dark-blue backdrop-blur rounded-full border-white/20 p-1 self-start flex gap-4"
         >
           <Icon class="h-6" pack="mdi" name="clock-time-eight" />
         </div>
 
         <div
-          class="bg-dark-blue backdrop-blur window border-white/20 p-1 self-start flex gap-2 px-2"
+          class="bg-dark-blue backdrop-blur rounded-full border-white/20 p-1 self-start flex gap-2 px-2"
         >
           <Icon class="h-6 text-white -ml-1" pack="mdi" name="circle" />
           <Icon class="h-6 text-white/20" pack="mdi" name="circle" />
@@ -79,48 +64,7 @@ const { title } = Astro.props as Props;
         <slot />
       </main>
     </div>
-
-    
-    <div class="p-5 flex gap-10 bg-black relative">
-      <noscript>
-        <div
-          class="absolute inset-0 bg-black/10 flex justify-center items-center backdrop-blur"
-        >
-          This will not work without javascript
-        </div>
-      </noscript>
-      <b>Style Settings</b>
-      <label class="flex gap-2">
-        Border Radius
-        <input
-          type="range"
-          min="0"
-          max="40"
-          value="0"
-          id="window-border-radius"
-        />
-      </label>
-      <label class="flex gap-2">
-        Border Width
-        <input
-          type="range"
-          min="0"
-          max="10"
-          value="1"
-          id="window-border-width"
-        />
-      </label>
-      <label class="flex gap-2">
-        Shadow Spread
-        <input
-          type="range"
-          min="0"
-          max="40"
-          value="0"
-          id="window-box-shadow-spread"
-        />
-      </label>
-    </div>
+   
 
     <style is:global>
       :root {
@@ -144,14 +88,6 @@ const { title } = Astro.props as Props;
       }
       body {
         margin: 0;
-      }
-      .window {
-        border-radius: var(--border-radius);
-        border-width: var(--border-width);
-        box-shadow: 0px calc(var(--box-shadow-spread) / 2)
-          var(--box-shadow-spread) 0 rgba(0, 0, 0, 0.4);
-        border: calc(--color-border);
-        backdrop-filter: blur(20px);
       }
     </style>
   </body>
