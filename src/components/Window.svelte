@@ -45,13 +45,14 @@
     size.set(1);
     pointing.set({ x: 0, y: 0 });
   }
+  // backdrop-blur-xl 
 </script>
 
 <svelte:window bind:scrollY={scroll} bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} />
 <div
   bind:this={box}
   style={style}
-  class="border border-white/20 rounded-3xl bg-dark-blue backdrop-blur-xl p-4 text-lg overflow-hidden"
+  class="border border-white/20 rounded-3xl bg-dark-blue p-4 text-lg overflow-hidden"
   on:mouseover={() => size.set(1.2 * normalizedSize)}
   on:mouseleave={() => leave()}
   on:mousemove={(e) => rotate(e)}

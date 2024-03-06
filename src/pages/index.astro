@@ -80,11 +80,11 @@ import Lizard from "../components/Lizard.svelte";
   
 
   <Window client:load>
-    <div class="flex flex-row h-full">
+    <div class="flex flex-col lg:flex-row h-full gap-3">
       <div class="min-w-max flex justify-center items-center">
         <img src="brickit.png" style="width: 256px; height: 256px;" class="border-8 border-black rounded-lg" />
       </div>
-      <div class="bg-orange w-0.5 mx-2 rounded"></div>
+      <div class="bg-orange h-0.5 lg:h-auto lg:w-0.5 mx-2 rounded"></div>
       <div class="grow flex flex-col justify-center text-pretty">
         Exciting Android puzzle game that challenges you. Navigate a ball through a maze-like level by clearing blocks. Upload custom levels to keep the fun going! Compete against your friends and show off your skills.</div>
       <a class="fixed top-0 right-0 p-4" href="https://play.google.com/store/apps/details?id=com.krakula.BrickIt"> <Icon class="h-6" pack="bi" name="box-arrow-up-right" /> </a>

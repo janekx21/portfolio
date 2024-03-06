@@ -23,7 +23,8 @@
 </script>
 
 <div class="p-2 flex flex-col justify-center">
-	<div class="relative cursor-pointer" on:click={() => kill()}>
+	<div class="relative cursor-pointer" on:click={() => kill()}
+		style="width: 133px; height: 191;">
 		<img class="absolute" style="left: 33px; top: 38px;" src={eye} />
 		<img
 			class="absolute"
@@ -35,6 +36,6 @@
 			style="left: 75px; top: 30px;"
 			src={`wing_${wingIndex}.png`}
 		/>
-		<img src="lizard.png" />
+		<img width="133" height="191" src="lizard.png" />
 	</div>
 </div>
