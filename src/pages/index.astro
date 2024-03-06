@@ -2,9 +2,13 @@
 import Layout from "../components/Layout.astro";
 import { Icon } from "astro-icon";
 import Window from "../components/Window.svelte";
-import Background from "../components/Background.svelte"
+// import Background from "../components/Background.svelte"
 import NeoTrain from "../components/NeoTrain.astro"
 import TheCoffice from "../components/TheCoffice.astro"
+import Lizard from "../components/Lizard.svelte";
+
+  // <div style="position: absolute; inset: 0; z-index: -1; overflow: hidden;" id="background"> </div>
+  // <Background client:only/>
 ---
 
 <Layout title="Portfolio">
@@ -34,6 +38,12 @@ import TheCoffice from "../components/TheCoffice.astro"
       </li>
     </ul>
   </Window>
+
+
+
+
+
+  
 
   <Window client:load>
     <div class="flex flex-col h-full">
@@ -65,6 +75,40 @@ import TheCoffice from "../components/TheCoffice.astro"
     </div>
   </Window>
 
+
+
+  
+
+  <Window client:load>
+    <div class="flex flex-row h-full">
+      <div class="min-w-max flex justify-center items-center">
+        <img src="brickit.png" style="width: 256px; height: 256px;" class="border-8 border-black rounded-lg" />
+      </div>
+      <div class="bg-orange w-0.5 mx-2 rounded"></div>
+      <div class="grow flex flex-col justify-center text-pretty">
+        Exciting Android puzzle game that challenges you. Navigate a ball through a maze-like level by clearing blocks. Upload custom levels to keep the fun going! Compete against your friends and show off your skills.</div>
+      <a class="fixed top-0 right-0 p-4" href="https://play.google.com/store/apps/details?id=com.krakula.BrickIt"> <Icon class="h-6" pack="bi" name="box-arrow-up-right" /> </a>
+    </div>
+  </Window>
+
+  <Window client:load>
+    <div class="flex flex-row h-full">
+      <div class="basis-1/2 flex justify-center">
+        <Lizard client:load />
+      </div>
+      <div class="bg-orange w-0.5 mx-2 rounded"></div>
+      <div class="basis-1/2 flex flex-col justify-center">
+        Online mulitplayer battle game in witch you fight other lizards with swords and fireballs.
+      </div>
+      <a class="fixed top-0 right-0 p-4" href=""> <Icon class="h-6" pack="bi" name="box-arrow-up-right" /> </a>
+    </div>
+  </Window>
+
+
+
+
+
+
   <Window client:load>
     <div class="flex flex-col h-full">
       <div class="basis-1/2 flex justify-center min-w-0">
@@ -89,6 +133,4 @@ import TheCoffice from "../components/TheCoffice.astro"
     </div>
   </Window>
 
-  <div style="position: absolute; inset: 0; z-index: -1; overflow: hidden;" id="background"> </div>
-  <Background client:only/>
 </Layout>
