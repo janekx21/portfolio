@@ -9,7 +9,7 @@
 
   let scrollSpring = spring(0,{
     stiffness: .12,
-    damping: .35,
+    damping: .25,
   });
   let size = spring(1, {
     stiffness: 0.3,
@@ -25,8 +25,8 @@
     x: (box?.offsetLeft ?? 0) + width / 2,
     y: (box?.offsetTop ?? 0) + height / 2,
   };
-  $: rotateY = $pointing.x + (center.x / windowWidth - 0.5) * -20;
-  $: rotateX = $pointing.y + ((center.y - scroll) / windowHeight - 0.5) * 20 - (scroll - $scrollSpring) * .4;
+  $: rotateY = Math.min(Math.max($pointing.x + (center.x / windowWidth - 0.5) * -20, -30), 30);
+  $: rotateX = Math.min(Math.max($pointing.y + ((center.y - scroll) / windowHeight - 0.5) * 20 - (scroll - $scrollSpring) * .4, -30), 30);
   $: style = `transform: perspective(1000px) scale(${$size}) rotateY(${rotateY}deg) rotateX(${rotateX}deg); filter: brightness(${brightness})`;
   $: normalizedSize =1// Math.sqrt(width * height) * .004
   $: shineStyle = `background: radial-gradient(500px 1200px at ${rotateX * 10 + width/2}px ${rotateY * 10 + height/2 + 250}px , rgba(255,255,255,15%) 0%, rgba(255,255,255,5%) 30%, rgba(255,255,255,0) 100%);`
@@ -52,13 +52,13 @@
 <div
   bind:this={box}
   style={style}
-  class="border border-white/20 rounded-3xl bg-dark-blue p-4 text-lg overflow-hidden"
+  class="border border-white/20 rounded-3xl bg-dark-blue p-4 text-lg overflow-hidden self-center"
   on:mouseover={() => size.set(1.2 * normalizedSize)}
   on:mouseleave={() => leave()}
   on:mousemove={(e) => rotate(e)}
 >
   <div class="overlay" style={shineStyle} />
-  <div class="overlay" style="background-image: url('/water_droplets.png'); background-size: 39px; opacity: .05; mix-blend-mode: screen;"  />
+  <!--<div class="overlay" style="mask: url('/water_droplets.png'); background-color: white; background-size: 39px; opacity: .05;"  />-->
   <slot />
 </div>
 

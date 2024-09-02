@@ -1,64 +1,139 @@
 ---
 import Layout from "../components/Layout.astro";
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import Window from "../components/Window.svelte";
 // import Background from "../components/Background.svelte"
-import NeoTrain from "../components/NeoTrain.astro"
-import TheCoffice from "../components/TheCoffice.astro"
+import NeoTrain from "../components/NeoTrain.astro";
+import TheCoffice from "../components/TheCoffice.astro";
 import Lizard from "../components/Lizard.svelte";
 
-  // <div style="position: absolute; inset: 0; z-index: -1; overflow: hidden;" id="background"> </div>
-  // <Background client:only/>
+// <div style="position: absolute; inset: 0; z-index: -1; overflow: hidden;" id="background"> </div>
+// <Background client:only/>
 ---
 
 <Layout title="Portfolio">
-  <Window client:load>
-    Hello!<br /><br />
-    I'm <span class="text-orange">Janek Winkler</span> a passionate professional
-    gameplay and tools engineer who loves to design and develop game-focused applications.
-  </Window>
+  <div
+    class="col-span-full grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-10 lg:gap-20 py-32"
+  >
+    <Window client:load>
+      Hello!<br /><br />
+      I'm <span class="text-orange">Janek Winkler</span> a passionate professional
+      gameplay and tools engineer who loves to design and develop game-focused applications.
+      Here you can find my projects and games.
+    </Window>
 
-  <Window client:load>
-    <ul class="flex flex-col gap-2">
-      <li class="flex items-center gap-2 leading-none">
-        <Icon class="h-6" pack="mdi" name="github" />
-        <a href="https://github.com/janekx21" class="hover:underline decoration-2"> Github </a>
-      </li>
-      <li class="flex items-center gap-2 leading-none">
-        <Icon class="h-6" pack="mdi" name="email" />
-        <a href="mailto:janekx21[insert_at]gmail.com" class="hover:underline decoration-2"> Email </a>
-      </li>
-      <li class="flex items-center gap-2 leading-none">
-        <Icon class="h-6" pack="cib" name="itch-io" />
-        <a href="https://janekx21.itch.io/" class="hover:underline decoration-2"> Itch.io </a>
-      </li>
-      <li class="flex items-center gap-2 leading-none">
-        <Icon class="h-6" pack="ri" name="instagram-fill" />
-        <a href="https://www.instagram.com/janekx21/" class="hover:underline decoration-2"> Instagram </a>
-      </li>
-    </ul>
-  </Window>
-
-
-
-
-
-  
+    <Window client:load>
+      <ul class="flex flex-col gap-2">
+        <li class="flex items-center gap-2 leading-none">
+          <Icon class="h-6" name="mdi:github" />
+          <a
+            href="https://github.com/janekx21"
+            class="hover:underline decoration-2"
+          >
+            Github
+          </a>
+        </li>
+        <li class="flex items-center gap-2 leading-none">
+          <Icon class="h-6" name="mdi:email" />
+          <a
+            href="mailto:janekx21[insert_at]gmail.com"
+            class="hover:underline decoration-2"
+          >
+            Email
+          </a>
+        </li>
+        <li class="flex items-center gap-2 leading-none">
+          <Icon class="h-6" name="cib:itch-io" />
+          <a
+            href="https://janekx21.itch.io/"
+            class="hover:underline decoration-2"
+          >
+            Itch.io
+          </a>
+        </li>
+        <!-- <li class="flex items-center gap-2 leading-none"> -->
+        <!-- <Icon class="h-6" name="ri:instagram-fill" /> -->
+        <!-- <a -->
+        <!-- href="https://www.instagram.com/janekx21/" -->
+        <!-- class="hover:underline decoration-2" -->
+        <!-- > -->
+        <!-- Instagram -->
+        <!-- </a> -->
+        <!-- </li> -->
+      </ul>
+    </Window>
+  </div>
 
   <Window client:load>
     <div class="flex flex-col h-full">
       <div class="basis-1/2 flex justify-center items-center">
-        <NeoTrain/>
+        <NeoTrain />
       </div>
-      <div class="bg-orange h-0.5 my-2 rounded"></div>
+      <div class="bg-transparent h-0.5 my-2 rounded"></div>
       <div class="basis-1/2 flex gap-3 items-center">
         <span>
-          A touch typing trainer written in <a class="hover:underline decoration-2" href="https://elm-lang.org/">Elm</a>.
-          It is designed to help you learn <a class="hover:underline decoration-2" href="https://www.neo-layout.org/">Neo</a> by dictation, and has special lessons for this purpose.
+          A touch typing trainer written in <a
+            class="hover:underline decoration-2"
+            href="https://elm-lang.org/">Elm</a
+          >. It is designed to help you learn <a
+            class="hover:underline decoration-2"
+            href="https://www.neo-layout.org/">Neo</a
+          > by dictation, and has special lessons for this purpose.
         </span>
       </div>
 
-      <a class="fixed top-0 right-0 p-4" href="https://neo-train.lamdera.app/"> <Icon class="h-6" pack="bi" name="box-arrow-up-right" /> </a>
+      <a class="fixed top-0 right-0 p-4" href="https://neo-train.lamdera.app/">
+        <Icon class="h-6" name="bi:box-arrow-up-right" />
+      </a>
+    </div>
+  </Window>
+
+  <Window client:load>
+    <div class="flex flex-col h-full">
+      <div class="basis-1/2 flex gap-3 items-center">
+        <span>
+          Language server for the manchester syntax of the web ontology language
+          OWL. It is written in rust and has its own tree-sitter grammar.
+        </span>
+      </div>
+
+      <a
+        class="fixed top-0 right-0 p-4"
+        href="https://github.com/janekx21/owl-ms-language-server/"
+      >
+        <Icon class="h-6" name="bi:box-arrow-up-right" />
+      </a>
+    </div>
+  </Window>
+
+  <div class="col-span-full lg:col-span-2 mx-auto">
+    <Window client:load>
+      <span class="px-12">My Games</span>
+    </Window>
+  </div>
+
+  <Window client:load>
+    <div class="flex flex-col lg:flex-row h-full gap-3">
+      <div class="min-w-max flex justify-center items-center">
+        <img
+          src="brickit.png"
+          style="width: 256px; height: 256px;"
+          class="border-8 border-black rounded-lg"
+        />
+      </div>
+      <div class="bg-transparent h-0.5 lg:h-auto lg:w-0.5 mx-2 rounded"></div>
+      <div class="grow flex flex-col justify-center text-pretty">
+        Exciting Android puzzle game that challenges you. Navigate a ball
+        through a maze-like level by clearing blocks. Upload custom levels to
+        keep the fun going! Compete against your friends and show off your
+        skills.
+      </div>
+      <a
+        class="fixed top-0 right-0 p-4"
+        href="https://play.google.com/store/apps/details?id=com.krakula.BrickIt"
+      >
+        <Icon class="h-6" name="bi:box-arrow-up-right" />
+      </a>
     </div>
   </Window>
 
@@ -67,54 +142,27 @@ import Lizard from "../components/Lizard.svelte";
       <div class="basis-1/2 flex flex-col justify-center">
         <img src="ace_of_space.png" width="520" height="757" />
       </div>
-      <div class="bg-orange w-0.5 mx-2 rounded"></div>
+      <div class="bg-transparent w-0.5 mx-2 rounded"></div>
       <div class="basis-1/2 flex flex-col gap-3 justify-center">
-        <span>Two player arcade shooter with cute graphics build with unity</span>
+        <span
+          >Two player arcade shooter with cute graphics build with unity</span
+        >
       </div>
-      <a class="fixed top-0 right-0 p-4" href="https://janekx21.itch.io/ace-of-space"> <Icon class="h-6" pack="bi" name="box-arrow-up-right" /> </a>
+      <a
+        class="fixed top-0 right-0 p-4"
+        href="https://janekx21.itch.io/ace-of-space"
+      >
+        <Icon class="h-6" name="bi:box-arrow-up-right" />
+      </a>
     </div>
   </Window>
-
-
-
-  
-
-  <Window client:load>
-    <div class="flex flex-col lg:flex-row h-full gap-3">
-      <div class="min-w-max flex justify-center items-center">
-        <img src="brickit.png" style="width: 256px; height: 256px;" class="border-8 border-black rounded-lg" />
-      </div>
-      <div class="bg-orange h-0.5 lg:h-auto lg:w-0.5 mx-2 rounded"></div>
-      <div class="grow flex flex-col justify-center text-pretty">
-        Exciting Android puzzle game that challenges you. Navigate a ball through a maze-like level by clearing blocks. Upload custom levels to keep the fun going! Compete against your friends and show off your skills.</div>
-      <a class="fixed top-0 right-0 p-4" href="https://play.google.com/store/apps/details?id=com.krakula.BrickIt"> <Icon class="h-6" pack="bi" name="box-arrow-up-right" /> </a>
-    </div>
-  </Window>
-
-  <Window client:load>
-    <div class="flex flex-row h-full">
-      <div class="basis-1/2 flex justify-center">
-        <Lizard client:load />
-      </div>
-      <div class="bg-orange w-0.5 mx-2 rounded"></div>
-      <div class="basis-1/2 flex flex-col justify-center">
-        Online mulitplayer battle game in witch you fight other lizards with swords and fireballs.
-      </div>
-      <a class="fixed top-0 right-0 p-4" href=""> <Icon class="h-6" pack="bi" name="box-arrow-up-right" /> </a>
-    </div>
-  </Window>
-
-
-
-
-
 
   <Window client:load>
     <div class="flex flex-col h-full">
       <div class="basis-1/2 flex justify-center min-w-0">
         <TheCoffice />
       </div>
-      <div class="bg-orange h-0.5 my-2 rounded"></div>
+      <div class="bg-transparent h-0.5 my-2 rounded"></div>
       <div class="basis-1/2 flex gap-4 items-center">
         Topdown zombie shooter with pixel look build with Unity
       </div>
@@ -124,13 +172,30 @@ import Lizard from "../components/Lizard.svelte";
   <Window client:load>
     <div class="flex flex-row h-full">
       <div class="basis-1/2 flex justify-center">
+        <Lizard client:load />
+      </div>
+      <div class="bg-transparent w-0.5 mx-2 rounded"></div>
+      <div class="basis-1/2 flex flex-col justify-center">
+        Online mulitplayer battle game in which you fight other lizards with
+        swords and fireballs.
+      </div>
+      <a class="fixed top-0 right-0 p-4" href="">
+        <Icon class="h-6" name="bi:box-arrow-up-right" />
+      </a>
+    </div>
+  </Window>
+
+  <div></div>
+
+  <Window client:load>
+    <div class="flex flex-row h-full">
+      <div class="basis-1/2 flex justify-center">
         <img src="catoffel_mono.svg" />
       </div>
-      <div class="bg-orange w-0.5 mx-2 rounded"></div>
+      <div class="bg-transparent w-0.5 mx-2 rounded"></div>
       <div class="basis-1/2 flex flex-col justify-center">
         Catoffel <br /> Explorative <br /> Two player PC Game
       </div>
     </div>
   </Window>
-
 </Layout>
