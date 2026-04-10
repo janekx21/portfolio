@@ -64,13 +64,24 @@
 
   let rotateTimer
   onMount(() => {
-    rotateTimer = setInterval(() => {
+    // rotateTimer = setInterval(() => {
+    // }, 16)
+    let handle: number;
+    const loop = () => {
       offset = {
         x: Math.sin(Date.now() * 0.002 + center.x) * 8,
         y: Math.cos(Date.now() * 0.002 + center.y) * 4
       }
-    }, 16)
+      handle = requestAnimationFrame(loop);
+    };
+
+    loop();
+    return () => {
+      cancelAnimationFrame(handle);
+    }
   })
+
+
 
 
   onDestroy(() => {
@@ -83,7 +94,7 @@
 <div
   bind:this={box}
   style={style}
-  class="border border-white/20 rounded-3xl bg-dark-blue p-4 text-lg overflow-hidden self-center"
+  class="border border-white/20 rounded-3xl bg-dark-blue p-4 text-lg overflow-hidden self-center will-change-transform"
   on:mouseover={() => size.set(1.2 * normalizedSize)}
   on:mouseleave={() => leave()}
   on:mousemove={(e) => rotate(e)}

@@ -18,14 +18,17 @@ const { title } = Astro.props as Props;
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <body>
-    <div
-      class="h-full w-full fixed bg-cover -z-10"
-      style="background-image: url('/background.svg');"
-    >
-    </div>
+  <body style="background-image: url('/background.svg');" class="bg-cover bg-fixed bg-center">
 
     <div class="min-h-screen flex flex-col p-1 font-mono overflow-x-hidden">
+      <div class="fixed bg-black rounded-xl p-2 self-center flex z-10 w-32 hover:w-64 transition-all justify-around overflow-hidden text-black hover:text-white">
+        <span class="underline decoration-2 select-none" >Home</span>
+        <a class="hover:underline decoration-2 select-none" href="/games" >Games</a>
+        <a class="hover:underline decoration-2 select-none" href="/art" >Art</a>
+        <a class="hover:underline decoration-2 select-none" href="/blog" >Blog</a>
+        <a class="hover:underline decoration-2 select-none" href="/work" >Work</a>
+      </div>
+
       <main
         class="container mx-auto grow p-5 sm:p-10 md:p-20 grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-10 lg:gap-20"
         transition:animate="slide"
