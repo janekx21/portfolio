@@ -12,16 +12,14 @@ import Lizard from "../components/Lizard.svelte";
 ---
 
 <Layout title="Portfolio">
-
   <!-- Primary Windows -->
   <div
     class="col-span-full grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-10 lg:gap-20 py-32"
   >
-
     <Window client:load>
       Hello!<br /><br />
-      I'm <span class="text-orange">Janek Winkler</span> a passionate
-      gameplay and tools engineer who loves to design and develop game-focused applications.
+      I'm <span class="text-orange-300">Janek Winkler</span> a passionate gameplay
+      and tools engineer who loves to design and develop game-focused applications.
       Here you can find my projects and games.
     </Window>
 
@@ -68,8 +66,9 @@ import Lizard from "../components/Lizard.svelte";
       <div class="flex flex-col h-full">
         <div class="basis-1/2 flex gap-3 items-center">
           <span>
-            Language server for the manchester syntax of the web ontology language
-            OWL. It is written in rust and has its own tree-sitter grammar.
+            Language server for the manchester syntax of the web ontology
+            language OWL. It is written in rust and has its own tree-sitter
+            grammar.
           </span>
         </div>
 
@@ -101,12 +100,14 @@ import Lizard from "../components/Lizard.svelte";
           </span>
         </div>
 
-        <a class="fixed top-0 right-0 p-4" href="https://neo-train.lamdera.app/">
+        <a
+          class="fixed top-0 right-0 p-4"
+          href="https://neo-train.lamdera.app/"
+        >
           <Icon class="h-6" name="bi:box-arrow-up-right" />
         </a>
       </div>
     </Window>
-
   </div>
 
   <div class="col-span-full mx-auto">
@@ -118,7 +119,6 @@ import Lizard from "../components/Lizard.svelte";
   <div
     class="col-span-full grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-10 lg:gap-20"
   >
-
     <Window client:load>
       <div class="flex flex-row h-full">
         <div class="basis-1/2 flex flex-col justify-center">
@@ -185,10 +185,13 @@ import Lizard from "../components/Lizard.svelte";
       <div class="bg-transparent w-0.5 mx-2 rounded"></div>
       <div class="basis-1/2 flex flex-col justify-center">
         <b>Lizard World</b>
-        Online mulitplayer battle game in which you fight other lizards with
-        swords and fireballs.
+        Online mulitplayer battle game in which you fight other lizards with swords
+        and fireballs.
       </div>
-      <a class="fixed top-0 right-0 p-4" href="https://github.com/janekx21/lizard-world/">
+      <a
+        class="fixed top-0 right-0 p-4"
+        href="https://github.com/janekx21/lizard-world/"
+      >
         <Icon class="h-6" name="bi:box-arrow-up-right" />
       </a>
     </div>
@@ -214,20 +217,29 @@ import Lizard from "../components/Lizard.svelte";
     <div class="col-span-2">
       <Window client:load>
         <div class="flex flex-row h-full">
-          <div class="basis-1/2 flex justify-center bg-cover rounded-xl" style="background-image: url('cultist_cleanup.png')">
+          <div
+            class="basis-1/2 flex justify-center bg-cover rounded-xl"
+            style="background-image: url('cultist_cleanup.png')"
+          >
           </div>
           <div class="bg-transparent w-0.5 mx-2 rounded"></div>
           <div class="basis-1/2 flex flex-col justify-center">
             <b>Cultist Cleanup 1871</b>
 
-            There was an event that was bloody, and the cultists have hired you. But that's all you know, better not ask any further questions. Collect a friend or two and clean this up. You have a strict time limit, so go go go.
-            </div>
-            <a class="fixed top-0 right-0 p-4" href="https://janekx21.itch.io/cultist-cleanup-1871">
-              <Icon class="h-6" name="bi:box-arrow-up-right" />
-            </a>
+            There was an event that was bloody, and the cultists have hired you.
+            But that's all you know, better not ask any further questions.
+            Collect a friend or two and clean this up. You have a strict time
+            limit, so go go go.
+          </div>
+          <a
+            class="fixed top-0 right-0 p-4"
+            href="https://janekx21.itch.io/cultist-cleanup-1871"
+          >
+            <Icon class="h-6" name="bi:box-arrow-up-right" />
+          </a>
         </div>
       </Window>
     </div>
   </div>
-  <div class="h-64"/>
+  <div class="h-64"></div>
 </Layout>

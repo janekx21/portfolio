@@ -1,16 +1,17 @@
 import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
 import svelte from "@astrojs/svelte";
 import icon from "astro-icon";
 import mdx from "@astrojs/mdx";
 
 import sitemap from "@astrojs/sitemap";
 
+import tailwindcss from "@tailwindcss/vite";
+
 // https://astro.build/config
 export default defineConfig({
   prefetch: true,
+
   integrations: [
-    tailwind(),
     svelte(),
     mdx(),
     sitemap(),
@@ -23,7 +24,12 @@ export default defineConfig({
       },
     }),
   ],
+
   experimental: {
     // viewTransitions: true,
+  },
+
+  vite: {
+    plugins: [tailwindcss()],
   },
 });

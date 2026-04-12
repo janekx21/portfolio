@@ -99,7 +99,7 @@
   on:mouseleave={() => leave()}
   on:mousemove={(e) => rotate(e)}
 >
-  <div class="overlay" style={shineStyle} />
+  <div class="overlay" style={shineStyle} ></div>
   <!--<div class="overlay" style="mask: url('/water_droplets.png'); background-color: white; background-size: 39px; opacity: .05;"  />-->
   <slot />
 </div>
