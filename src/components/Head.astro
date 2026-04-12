@@ -1,12 +1,10 @@
 ---
-const url = Astro.url;
-console.log(url)
-let items = [
-  {url: '/', title: 'Home'}
-]
-import HeadLink from "./HeadLink.astro"
+import HeadLink from "./HeadLink.astro";
 ---
-<div class="fixed bg-black rounded-full p-2 self-center flex z-10 w-32 hover:w-64 transition-all transition-time-1000 justify-around overflow-hidden head">
+
+<div
+  class="fixed bg-black rounded-full p-2 self-center flex z-10 w-32 hover:w-64 transition-all transition-time-1000 justify-around overflow-hidden head"
+>
   <HeadLink url="/">Home</HeadLink>
   <HeadLink url="/games">Games</HeadLink>
   <HeadLink url="/art">Art</HeadLink>
@@ -16,20 +14,20 @@ import HeadLink from "./HeadLink.astro"
 </div>
 
 <style>
-.head {
-  color: transparent;
-}
-.head:hover {
-  color: white;
-}
+  .head {
+    color: transparent;
+  }
+  .head:hover {
+    color: white;
+  }
 
-.dots {
-  z-index: -10;
-  transform: scaleX(1);
-}
+  .dots {
+    z-index: -10;
+    transform: scaleX(1);
+  }
 
-.head:hover .dots {
-  color: black;
-  transform: scaleX(3);
-}
+  .head:hover .dots {
+    color: black;
+    transform: scaleX(3);
+  }
 </style>
