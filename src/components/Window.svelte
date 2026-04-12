@@ -40,7 +40,7 @@
   $: rotateY = Math.min(Math.max($pointing.x + (center.x / windowWidth - 0.5) * -20, -30), 30) + offset.y * offsetIntensity;
   $: rotateX = Math.min(Math.max($pointing.y + ((center.y - scroll) / windowHeight - 0.5) * 20 - (scroll - $scrollSpring) * .4, -30), 30) + offset.x * offsetIntensity;
   $: opacity = 1 - Math.abs(hideAmount);
-  $: style = `transform: perspective(1000px) scale(${$size}) rotateY(${rotateY}deg) rotateX(${rotateX}deg) translateX(${positionOffsetX}px); filter: brightness(${brightness});opacity: ${Math.floor(opacity * 100)}%;`;
+  $: style = opacity <= 0 ? "opacity: 0" : `transform: perspective(1000px) scale(${$size}) rotateY(${rotateY}deg) rotateX(${rotateX}deg) translateX(${positionOffsetX}px); filter: brightness(${brightness});opacity: ${Math.floor(opacity * 100)}%;`;
   $: normalizedSize =1// Math.sqrt(width * height) * .004
   $: shineStyle = `background: radial-gradient(500px 1200px at ${(rotateY - 5) * -20 + width/2}px ${rotateX * 20 + height/2 + 250}px , rgba(255,255,255,15%) 0%, rgba(255,255,255,5%) 30%, rgba(255,255,255,0) 100%);`
   $: brightness = Math.tanh(-rotateX * .03) * -.5 + 1;

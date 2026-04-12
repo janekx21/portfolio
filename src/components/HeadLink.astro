@@ -1,0 +1,9 @@
+---
+const currentUrl = Astro.url;
+const {url} = Astro.props;
+---
+{url == currentUrl.pathname ? 
+  <span class="underline decoration-2 select-none min-w-0" ><slot/></span>
+  :
+  <a class="hover:underline decoration-2 select-none min-w-0" href={url} ><slot/></a>
+ }
