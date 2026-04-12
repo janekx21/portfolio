@@ -1,20 +1,29 @@
 ---
 import Layout from "../components/Layout.astro";
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection, getEntry } from "astro:content";
+import Window from "../components/Window.svelte";
 
 // Get all entries from a collection.
 // Requires the name of the collection as an argument.
-const posts = (await getCollection('blog')).sort(
+const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-console.log(posts)
+console.log(posts);
 ---
 
-<Layout>
-<h1>My posts</h1>
-  <ul>
-    {posts.map(post => (
-      <li><a href={`/blog/${post.id}`}>{post.data.title}</a></li>
-    ))}
-  </ul>
+<Layout title="Blog">
+  <div class="col-span-2 flex flex-col gap-4">
+    <h1 class="text-2xl border border-white/20 rounded-3xl bg-dark-blue p-4">
+      My posts
+    </h1>
+    <div class="flex flex-wrap">
+      {
+        posts.map((post) => (
+          <Window client:load>
+            <a href={`/blog/${post.id}`}>{post.data.title}</a>
+          </Window>
+        ))
+      }
+    </div>
+  </div>
 </Layout>
