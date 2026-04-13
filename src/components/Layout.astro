@@ -22,7 +22,7 @@ import "../styles/global.css";
   </head>
   <body
     style="background-image: url('/background.svg');"
-    class="bg-cover bg-fixed bg-center"
+    class="bg-cover bg-fixed bg-center bg-opaque-blue"
   >
     <div class="min-h-screen flex flex-col p-1 font-mono overflow-x-hidden">
       <Head />
@@ -33,6 +33,11 @@ import "../styles/global.css";
       >
         <slot />
       </main>
+
+      <span>
+        <a class="text-white/50 text-xs" href="/impressum">Impressum</a>
+        <a class="text-white/50 text-xs" href="/dsgvo">Datenschutzerklärung</a>
+      </span>
     </div>
 
     <style is:global>
