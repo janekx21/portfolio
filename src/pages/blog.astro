@@ -9,7 +9,6 @@ import { Image } from "astro:assets";
 const posts = (await getCollection("blog"))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .flatMap((x) => [x, x, x, x]);
-console.log(posts);
 ---
 
 <Layout title="Blog">
