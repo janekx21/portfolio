@@ -3,6 +3,8 @@ import Layout from "../components/Layout.astro";
 import { getCollection, getEntry } from "astro:content";
 import Window from "../components/Window.svelte";
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import FormattedDate from "../components/FormattedDate.astro";
 
 // Get all entries from a collection.
 // Requires the name of the collection as an argument.
@@ -16,39 +18,45 @@ const posts = (await getCollection("blog"))
     <h1 class="text-2xl border border-white/20 rounded-3xl bg-dark-blue p-4">
       TODAY
     </h1>
-    <div class="flex flex-wrap gap-32 justify-center">
+    <div class="flex flex-col gap-8 justify-center">
       {
         posts.map((post, i) => (
+          <Icon class="self-center text-black/50" name="bi:caret-up-fill" />
+          <Icon class="self-center text-2xl text-black/50" name="bi:caret-up-fill" />
           <Window
             client:load
-            class={i % 2 == 0 ? "ml-8 lg:ml-32" : "mr-8 lg:mr-32"}
+            class={i % 2 == 0 ? "ml-8 sm:ml-32" : "mr-8 sm:mr-32"}
           >
             <a
               href={`/blog/${post.id}`}
-              class={i % 2 == 1 ? "flex gap-2" : "flex flex-row-reverse gap-2"}
+              class={i % 2 == 1 ? "flex flex-col sm:flex-row gap-2" : "flex flex-col sm:flex-row-reverse gap-2"}
             >
               <Image
-                width={184}
-                height={184}
+                width={128}
+                height={128}
                 src={post.data.thumpnail}
                 alt=""
                 quality="mid"
                 decoding="async"
                 loading="lazy"
-                class="rounded-xl"
+                class="rounded-xl self-center"
               />
-              <p class="text-justify">
-                <b>{post.data.title}</b>
-                <br />
+              <div class="flex flex-col">
+                <div class="flex flex-wrap align-center  gap-2">
+                <b class="align-middle">{post.data.title}</b>
+                <div class="flex flex-col justify-center px-2 text-xs border border-white/70 text-white/70 rounded-full">
+        					<FormattedDate date={post.data.pubDate} />
+                </div>
+                </div>
 
-                <span>{post.data.description}</span>
-              </p>
+                <p class="text-justify">{post.data.description}</p>
+              </div>
             </a>
           </Window>
         ))
       }
       <!-- <div -->
-      <!-- class="absolute bg-orange-400/50 w-12 top-0 bottom-0 z-[-10] rounded-full" -->
+      <!-- class="absolute bg-indigo-400/50 w-2 top-0 bottom-0 z-[-10] rounded-full" -->
       <!-- > -->
       <!-- </div> -->
     </div>

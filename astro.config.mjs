@@ -20,7 +20,7 @@ export default defineConfig({
         mdi: ["github", "email"],
         cib: ["itch-io"],
         ri: ["instagram-fill"],
-        bi: ["box-arrow-up-right"],
+        bi: ["box-arrow-up-right", "caret-up-fill"],
       },
     }),
   ],

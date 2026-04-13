@@ -10,31 +10,36 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <Layout title={title}>
-	<div class="col-span-2">
-		<article class="border border-white/20 rounded-3xl bg-dark-blue p-4">
-			<div class="">
-				{
-					heroImage && (
-						<Image width={1020} height={510} src={heroImage} alt="" />
-					)
-				}
+	<article class="col-span-2 flex justify-center">
+		<div class="">
+			{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
+		</div>
+		<div class="flex flex-col gap-4 w-full">
+			<div
+				class="ml-[-20px] sm:ml-0 mr-8 sm:mr-20 border border-white/20 rounded-3xl bg-dark-blue p-4 flex flex-wrap gap-2 items-center"
+			>
+				<h1 class="text-2xl">{title}</h1>
 			</div>
-			<div class="flex flex-col gap-4">
-				<div class="flex flex-wrap gap-2 items-center">
-					<div class="px-2 border border-white/70 text-white/70 rounded-full">
-						<FormattedDate date={pubDate} />
-						{
-							updatedDate && (
-								<div class="">
-									Last updated on <FormattedDate date={updatedDate} />
-								</div>
-							)
-						}
-					</div>
-					<h1 class="text-2xl">{title}</h1>
+			<div
+				class="mr-[-20px] sm:mr-0 ml-8 sm:ml-20 border border-white/20 rounded-3xl bg-dark-blue p-4 flex flex-wrap gap-2 items-center"
+			>
+				<div class="px-2 border border-white/70 text-white/70 rounded-full">
+					<FormattedDate date={pubDate} />
+					{
+						updatedDate && (
+							<div class="">
+								Last updated on <FormattedDate date={updatedDate} />
+							</div>
+						)
+					}
 				</div>
+				by Janek
+			</div>
+			<div
+				class="mx-[-20px] sm:mx-0 border border-white/20 rounded-3xl bg-dark-blue p-4 prose prose-invert prose-p:text-justify prose-hr:border-white/20 prose-code:before:content-none prose-code:after:content-none prose-code:text-orange-300 overflow-auto"
+			>
 				<slot />
 			</div>
-		</article>
-	</div>
+		</div>
+	</article>
 </Layout>
