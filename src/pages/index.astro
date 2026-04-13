@@ -16,7 +16,7 @@ import Lizard from "../components/Lizard.svelte";
   <div
     class="col-span-full grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-10 lg:gap-20 py-12"
   >
-    <Window client:load>
+    <Window client:load class="text-justify">
       Hello!<br /><br />
       I'm <span class="text-orange-300">Janek Winkler</span> a passionate gameplay
       and tools engineer who loves to design and develop game-focused applications.
@@ -29,7 +29,7 @@ import Lizard from "../components/Lizard.svelte";
           <Icon class="h-6" name="mdi:github" />
           <a
             href="https://github.com/janekx21"
-            class="hover:underline decoration-2"
+            class="underline decoration-2 hover:text-orange-300"
           >
             Github
           </a>
@@ -38,7 +38,7 @@ import Lizard from "../components/Lizard.svelte";
           <Icon class="h-6" name="mdi:email" />
           <a
             href="mailto:janekx21[insert_at]gmail.com"
-            class="hover:underline decoration-2"
+            class="underline decoration-2 hover:text-orange-300"
           >
             Email
           </a>
@@ -47,7 +47,7 @@ import Lizard from "../components/Lizard.svelte";
           <Icon class="h-6" name="cib:itch-io" />
           <a
             href="https://janekx21.itch.io/"
-            class="hover:underline decoration-2"
+            class="underline decoration-2 hover:text-orange-300"
           >
             Itch.io
           </a>
@@ -65,19 +65,17 @@ import Lizard from "../components/Lizard.svelte";
     <Window client:load>
       <div class="flex flex-col h-full">
         <div class="basis-1/2 flex gap-3 items-center">
-          <span>
-            Language server for the manchester syntax of the web ontology
-            language OWL. It is written in rust and has its own tree-sitter
-            grammar.
+          <span class="text-justify">
+            <a
+              class="float-right ml-2 hover:text-orange-300"
+              href="https://github.com/janekx21/owl-ms-language-server/"
+            >
+              <Icon class="h-6" name="bi:box-arrow-up-right" />
+            </a>
+            Language server for the manchester syntax of the web ontology language
+            OWL. It is written in rust and has its own tree-sitter grammar.
           </span>
         </div>
-
-        <a
-          class="fixed top-0 right-0 p-4"
-          href="https://github.com/janekx21/owl-ms-language-server/"
-        >
-          <Icon class="h-6" name="bi:box-arrow-up-right" />
-        </a>
       </div>
     </Window>
 
@@ -89,19 +87,19 @@ import Lizard from "../components/Lizard.svelte";
         </div>
         <div class="bg-transparent h-0.5 my-2 rounded"></div>
         <div class="basis-1/2 flex gap-3 items-center">
-          <span>
+          <span class="text-justify">
             A touch typing trainer written in <a
-              class="hover:underline decoration-2"
+              class="underline decoration-2 hover:text-orange-300"
               href="https://elm-lang.org/">Elm</a
             >. It is designed to help you learn <a
-              class="hover:underline decoration-2"
+              class="underline decoration-2 hover:text-orange-300"
               href="https://www.neo-layout.org/">Neo</a
             > by dictation and has special lessons for this purpose.
           </span>
         </div>
 
         <a
-          class="fixed top-0 right-0 p-4"
+          class="fixed top-0 right-0 p-4 hover:text-orange-300"
           href="https://neo-train.lamdera.app/"
         >
           <Icon class="h-6" name="bi:box-arrow-up-right" />
@@ -131,7 +129,7 @@ import Lizard from "../components/Lizard.svelte";
           >
         </div>
         <a
-          class="fixed top-0 right-0 p-4"
+          class="fixed top-0 right-0 p-4 hover:text-orange-300"
           href="https://janekx21.itch.io/ace-of-space"
         >
           <Icon class="h-6" name="bi:box-arrow-up-right" />
@@ -156,7 +154,7 @@ import Lizard from "../components/Lizard.svelte";
           skills.
         </div>
         <a
-          class="fixed top-0 right-0 p-4"
+          class="fixed top-0 right-0 p-4 hover:text-orange-300"
           href="https://github.com/janekx21/BrickIt"
         >
           <Icon class="h-6" name="bi:box-arrow-up-right" />
@@ -189,7 +187,7 @@ import Lizard from "../components/Lizard.svelte";
         and fireballs.
       </div>
       <a
-        class="fixed top-0 right-0 p-4"
+        class="fixed top-0 right-0 p-4 hover:text-orange-300"
         href="https://github.com/janekx21/lizard-world/"
       >
         <Icon class="h-6" name="bi:box-arrow-up-right" />
@@ -232,7 +230,7 @@ import Lizard from "../components/Lizard.svelte";
             limit, so go go go.
           </div>
           <a
-            class="fixed top-0 right-0 p-4"
+            class="fixed top-0 right-0 p-4 hover:text-orange-300"
             href="https://janekx21.itch.io/cultist-cleanup-1871"
           >
             <Icon class="h-6" name="bi:box-arrow-up-right" />

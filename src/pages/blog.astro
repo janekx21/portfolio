@@ -2,28 +2,56 @@
 import Layout from "../components/Layout.astro";
 import { getCollection, getEntry } from "astro:content";
 import Window from "../components/Window.svelte";
+import { Image } from "astro:assets";
 
 // Get all entries from a collection.
 // Requires the name of the collection as an argument.
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const posts = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .flatMap((x) => [x, x, x, x]);
 console.log(posts);
 ---
 
 <Layout title="Blog">
-  <div class="col-span-2 flex flex-col gap-4">
+  <div class="col-span-2 flex flex-col items-center gap-16 relative">
     <h1 class="text-2xl border border-white/20 rounded-3xl bg-dark-blue p-4">
-      My posts
+      TODAY
     </h1>
-    <div class="flex flex-wrap">
+    <div class="flex flex-wrap gap-32 justify-center">
       {
-        posts.map((post) => (
-          <Window client:load>
-            <a href={`/blog/${post.id}`}>{post.data.title}</a>
+        posts.map((post, i) => (
+          <Window
+            client:load
+            class={i % 2 == 0 ? "ml-8 lg:ml-32" : "mr-8 lg:mr-32"}
+          >
+            <a
+              href={`/blog/${post.id}`}
+              class={i % 2 == 1 ? "flex gap-2" : "flex flex-row-reverse gap-2"}
+            >
+              <Image
+                width={184}
+                height={184}
+                src={post.data.thumpnail}
+                alt=""
+                quality="mid"
+                decoding="async"
+                loading="lazy"
+                class="rounded-xl"
+              />
+              <p class="text-justify">
+                <b>{post.data.title}</b>
+                <br />
+
+                <span>{post.data.description}</span>
+              </p>
+            </a>
           </Window>
         ))
       }
+      <!-- <div -->
+      <!-- class="absolute bg-orange-400/50 w-12 top-0 bottom-0 z-[-10] rounded-full" -->
+      <!-- > -->
+      <!-- </div> -->
     </div>
   </div>
 </Layout>
