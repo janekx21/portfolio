@@ -36,6 +36,6 @@
 			style="left: 75px; top: 30px;"
 			src={`wing_${wingIndex}.png`}
 		/>
-		<img width="133" height="191" src="lizard.png" />
+		<img width="133" height="191" src="/lizard.png" />
 	</div>
 </div>
