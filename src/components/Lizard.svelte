@@ -1,15 +1,15 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 
-	let eye = "eye.png";
+	let eye = "/eye.png";
 	let wingIndex = 0;
 
 	onMount(() => {
 		setInterval(() => {
-			eye = "eye_closed.png";
+			eye = "/eye_closed.png";
 
 			setTimeout(() => {
-				eye = "eye.png";
+				eye = "/eye.png";
 			}, 16 * 12);
 		}, 4000);
 		setInterval(() => {
@@ -18,7 +18,7 @@
 	});
 
 	function kill() {
-		eye = "eye_crossed.png";
+		eye = "/eye_crossed.png";
 	}
 </script>
 
@@ -29,7 +29,7 @@
 		<img
 			class="absolute"
 			style="left: -25px; top: -40px; z-index: -1;"
-			src="sword.png"
+			src="/sword.png"
 		/>
 		<img
 			class="absolute"
