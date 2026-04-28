@@ -4,9 +4,10 @@ import { Icon } from "astro-icon";
 
 export interface Props {
   title: string;
+  bgColor?: string;
 }
 
-const { title } = Astro.props as Props;
+const { title, bgColor } = Astro.props as Props;
 import Head from "../components/Head.astro";
 import "../styles/global.css";
 ---
@@ -21,7 +22,7 @@ import "../styles/global.css";
     <ClientRouter />
   </head>
   <body
-    style="background-image: url('/background.svg');"
+    style={`background-image: url('/background.svg'); ${bgColor ? `background-color: ${bgColor};` : ""}`}
     class="bg-cover bg-fixed bg-center bg-opaque-blue"
   >
     <div class="min-h-screen flex flex-col p-1 font-mono overflow-x-hidden">

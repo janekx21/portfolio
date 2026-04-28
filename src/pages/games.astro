@@ -1,9 +1,54 @@
 ---
 import Layout from "../components/Layout.astro";
+import { getCollection, getEntry } from "astro:content";
+import Window from "../components/Window.svelte";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import FormattedDate from "../components/FormattedDate.astro";
+import { repeat } from "cypress/types/lodash";
+
+// Get all entries from a collection.
+// Requires the name of the collection as an argument.
+const games = (await getCollection("games")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 ---
 
-<Layout>
-<h1 class="text-5xl">
-	🏗️ Under construction
-</h1>
+<Layout title="Games" bgColor="#337731">
+  <div class="col-span-2 flex flex-col items-center gap-16 relative">
+    <div class="flex flex-wrap gap-8 justify-center">
+      {
+        games.map((game, i) => (
+          <Window client:load>
+            <a href={`/games/${game.id}`} class="flex flex-col gap-2">
+              <Image
+                width={256}
+                height={256}
+                src={game.data.thumpnail}
+                alt=""
+                quality="mid"
+                decoding="async"
+                loading="lazy"
+                class="rounded-xl self-center"
+              />
+              <div class="flex flex-col">
+                <div class="flex flex-wrap align-center  gap-2">
+                  <b class="align-middle">{game.data.title}</b>
+                  <div class="flex flex-col justify-center px-2 text-xs border border-white/70 text-white/70 rounded-full">
+                    <FormattedDate date={game.data.pubDate} />
+                  </div>
+                </div>
+
+                <p class="text-justify max-w-xs">{game.data.description}</p>
+              </div>
+            </a>
+          </Window>
+        ))
+      }
+      <!-- <div -->
+      <!-- class="absolute bg-indigo-400/50 w-2 top-0 bottom-0 z-[-10] rounded-full" -->
+      <!-- > -->
+      <!-- </div> -->
+    </div>
+  </div>
 </Layout>

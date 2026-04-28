@@ -11,6 +11,10 @@
   let windowWidth = $state(0);
   let windowHeight = $state(0);
   let offset = $state({ x: 0, y: 0 });
+  // let offsetLeft = $state(0);
+  // let offsetTop = $state(0);
+  // let clientWidth = $state(0);
+  // let clientHeight = $state(0);
 
   let scrollSpring = spring(0, { stiffness: 0.05, damping: .25 });
   let size = spring(1, { stiffness: 0.3, damping: 0.5 });
@@ -20,10 +24,10 @@
 
   let width = $derived(box?.clientWidth ?? 400);
   let height = $derived(box?.clientHeight ?? 400);
-  let center = $derived({
-    x: (box?.offsetLeft ?? 0) + width / 2,
-    y: (box?.offsetTop ?? 0) + height / 2,
-  });
+  let center = $derived( box ? {
+    x: (box.offsetLeft) + width / 2,
+    y: (box.offsetTop) + height / 2,
+  } : {x: width/2, y: height/2});
 
   let hideAmount = $derived(Math.pow(((center.y - $scrollSpring) / windowHeight - 0.5) * 2, 8));
   let side = $derived(mobile ? Math.sin(center.y / windowHeight * 10) : center.x / windowWidth - 0.5);
@@ -73,9 +77,21 @@
     loop();
     return () => cancelAnimationFrame(handle);
   });
+
+  function updateCenter(){
+    if (box) {
+      // Manual update this for now
+     
+      center.x = (box.offsetLeft) + width / 2
+      center.y = (box.offsetTop) + height / 2
+
+      width = box.clientWidth
+      height = box.clientHeight
+    }
+  }
 </script>
 
-<svelte:window bind:scrollY={scroll} bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} />
+<svelte:window bind:scrollY={scroll} bind:innerWidth={windowWidth} bind:innerHeight={windowHeight} on:resize={()=>updateCenter()} />
 
 <div
   bind:this={box}

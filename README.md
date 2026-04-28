@@ -1,4 +1,3 @@
 # Todo
 
-- light theme
-- 
+- Add all games

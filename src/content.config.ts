@@ -20,5 +20,15 @@ const blog = defineCollection({
   }),
 });
 
+const games = defineCollection({
+  loader: glob({ base: "./src/content/games", pattern: "**/*.{md,mdx}" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    thumpnail: z.string(),
+  }),
+});
+
 // 5. Export a single `collections` object to register your collection(s)
-export const collections = { blog };
+export const collections = { blog, games };
